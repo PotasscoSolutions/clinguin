@@ -1,5 +1,6 @@
 import { Attribute, Injectable } from '@angular/core';
 import { AttributeDto, ElementDto } from './types/json-response.dto';
+// import { log } from 'console'; // Removed, use global console.log instead
 
 @Injectable({
     providedIn: 'root'
@@ -161,7 +162,7 @@ export class AttributeHelperService {
         })
 
         this.setHover(html, attributes)
-		this.setCustomTooltip(html, attributes)
+        this.setCustomTooltip(html, attributes)
     }
 
     addGeneralAttributes(html: HTMLElement, attributes: AttributeDto[]) {

@@ -37,6 +37,7 @@ export class MessageComponent {
     let attrTitle = this.attributeService.findGetAttributeValue("title", attributes, "")
     let attrMessage = this.attributeService.findGetAttributeValue("message", attributes, "")
 
+
     this.visibility = this.attributeService.findGetAttributeValue("visibility", attributes, "shown")
 
     if (attrType == "error") {

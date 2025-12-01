@@ -96,7 +96,7 @@ attr(nav_container, class, ("d-flex";"flex-column")).
                                     set_external(include(_context_value(t1_content,str)),true))).
             attr(b1, label, "Add").
             attr(b1, class, "m-1").
-            attr(b1, class, "btn-secondary").
+            attr(b1, class, "btn-main").
             attr(b1, icon, "fa-plus").
 
 
@@ -105,7 +105,7 @@ attr(nav_container, class, ("d-flex";"flex-column")).
     %%%%%%%%%%%%%%%%%%%%%%%%
 
     elem(included, container, window).
-    attr(included, class, ("bg-secondary";"bg-opacity-50";"p-4";"ps-5";"rounded";"d-flex";"flex-column";"justify-content-start"; "m-1")).
+    attr(included, class, ("container-light";"d-flex";"flex-column";"justify-content-start"; "m-1")).
     attr(included, order, 1).
 	attr(included, width, 400).
 
@@ -113,7 +113,7 @@ attr(nav_container, class, ("d-flex";"flex-column")).
         elem(add_button, button, included).
         attr(add_button, icon, "fa-user-plus").
         attr(add_button, order, 1).
-        attr(add_button, class, ("btn-secondary";"bg-opacity-50")).
+        attr(add_button, class, ("btn-main")).
         when(add_button, click, update, (modal, visibility, shown)).
 		attr(add_button, tooltip, "Add a new person").
 
@@ -127,7 +127,7 @@ attr(nav_container, class, ("d-flex";"flex-column")).
                 when(included_cb(P), click, call, set_external(include(P),true)) :- person(P), not include(P).
                 when(included_cb(P), click, call, set_external(include(P),false)) :- person(P), include(P).
                 attr(included_cb(P), label, P):- person(P).
-                attr(included_cb(P), class, ("text-capitalize";"h6";"m-2")):- person(P).
+                attr(included_cb(P), class, ("text-capitalize";"m-2")):- person(P).
 				attr(included(P), tooltip, "Click the checkbox to assign/unassign"):- person(P).
 
 
@@ -138,6 +138,7 @@ attr(nav_container, class, ("d-flex";"flex-column")).
     elem(unassigned, collapse, included).
     attr(unassigned, order, 3).
     attr(unassigned, label, "People unassigned").
+    attr(unassigned, class, ("h6";"mt-5";"text-primary")).
     attr(unassigned, icon, ("fa-list")).
     % attr(unassigned, collapsed, false).
     % attr(unassigned, expanded_icon, ("fa-home")).
@@ -145,7 +146,7 @@ attr(nav_container, class, ("d-flex";"flex-column")).
     % attr(unassigned, class, ("disabled")):- #false : person(P), include(P), not _all(assign(_,P)).
 
     elem(unassigned_content, container, unassigned).
-    attr(unassigned_content, class, ("border";"m-1";"p-3";"rounded";"border-dark";"align-items-start")).
+    attr(unassigned_content, class, ("m-1";"p-3";"rounded";"text-primary";"align-items-start")).
 
     elem(unassigned(P), label, unassigned_content):- person(P), include(P), not _all(assign(_,P)).
     attr(unassigned(P), label, @stringify(P,true)):- person(P), include(P), not _all(assign(_,P)).
@@ -162,10 +163,8 @@ attr(nav_container, class, ("d-flex";"flex-column")).
 
         elem(table(T), container, tables):-table(T,_).
         attr(table(T), flex_direction, "row"):-table(T,_).
-        attr(table(T), class, "border"):-table(T,L).
-        attr(table(T), class, "bg-primary"):-table(T,L).
-        attr(table(T), class, "bg-opacity-50"):-table(T,L).
-        attr(table(T), class, "rounded"):-table(T,L).
+        attr(table(T), class, ("container-dark")):-table(T,L).
+        % attr(table(T), class, "rounded"):-table(T,L).
         attr(table(T), class, "m-1"):-table(T,L).
         attr(table(T), class, ("p-4";"ps-5")):-table(T,L).
 		attr(table(T), width, 400):-table(T,L).
@@ -176,17 +175,17 @@ attr(nav_container, class, ("d-flex";"flex-column")).
 
                 elem(table_label(T), label, table_label_container(T)):-table(T,_).
                 attr(table_label(T), label, L):-table(T,L).
-                attr(table_label(T), class, ("font-weight-bold";"h5")):-table(T,L).
+                attr(table_label(T), class, ("font-weight-bold";"h6")):-table(T,L).
                 attr(table_label(T), class, "align-middle"):-table(T,L).
 				attr(table_label(T), tooltip, L) :-table(T,L).
 
             elem(table_dropdowns(T), container, table(T)):-table(T,_).
             attr(table_dropdowns(T), order, 2):-table(T,_).
-            attr(table_dropdowns(T), class, "m-2"):-table(T,_).
+            attr(table_dropdowns(T), class, ("m-2";"border-start";"justify-content-end";"align-items-start";"d-flex")):-table(T,_).
 			attr(table_dropdowns(T), tooltip, "Click to assign a person to a seat"):-table(T,_).
 
                 elem(table_seat(S,T), dropdown_menu, table_dropdowns(T)):-seat(S,T).
-                attr(table_seat(S,T), class, ("btn-primary";"m-1";"btn-sm";"text-capitalize";"m-2")):-seat(S,T).
+                attr(table_seat(S,T), class, ("btn-main";"m-1";"btn-sm";"text-capitalize";"m-2")):-seat(S,T).
                 attr(table_seat(S,T), selected, P):- _all(assign(seat(S,T),P)).
                 attr(table_seat(S,T), selected, P):- assign(seat(S,T),P), _clinguin_browsing.
 
@@ -236,17 +235,20 @@ attr(nav_container, class, ("d-flex";"flex-column")).
 
         elem(menu_bar_download, button, menu_bar).
         attr(menu_bar_download, label, "Download").
+        attr(menu_bar_download, class, "btn-text-dark").
         attr(menu_bar_download, icon, "fa-download").
         when(menu_bar_download, click, call, download).
 
 
         elem(menu_bar_select, button, menu_bar).
         attr(menu_bar_select, label, "Select solution").
+        attr(menu_bar_select, class, "btn-text-dark").
         attr(menu_bar_select, icon, "fa-hand-pointer").
         when(menu_bar_select, click, call, select).
 
         elem(menu_bar_next_opt, button, menu_bar).
         attr(menu_bar_next_opt, label, "Next").
+        attr(menu_bar_next_opt, class, "btn-text-dark").
         attr(menu_bar_next_opt, icon, "fa-forward-fast").
         when(menu_bar_next_opt, click, call, next_solution(optN)).
 

@@ -1,5 +1,14 @@
-<div class="form-check " #checkboxForm>
+<!-- <div class="form-check d-flex align-items-center" #checkboxForm style="gap: 0.5rem;">
     <input [attr.disabled]="disabledAttribute? true : null" #checkbox class="form-check-input" type="{{type}}" value=""
         id="checkbox-{{checkboxID}}" [attr.checked]="checked? true : null">
-    <label class="form-check-label" for="checkbox-{{checkboxID}}">{{ checkboxLabel }}</label>
+    <label class="form-check-label" for="checkbox-{{checkboxID}}" style="margin-bottom:0;">{{ checkboxLabel }}</label>
+</div> -->
+
+<div class="form-check d-flex align-items-center" #checkboxForm style="gap: 0.5rem;">
+    <input [attr.disabled]="disabledAttribute? true : null" #checkbox class="form-check-input" type="{{type}}"
+        id="checkbox-{{checkboxID}}" [attr.disabled]="disabledAttribute ? true : null"
+        [attr.checked]="checked ? true : null">
+    <label class="form-check-label d-flex align-items-center" for="checkbox-{{checkboxID}}">
+        {{ checkboxLabel }}
+    </label>
 </div>

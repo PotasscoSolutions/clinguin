@@ -695,6 +695,7 @@ class ClingoBackend:
             self._on_model,
             include_all_atoms=not self._explicit_show,
         )
+        self._logger.debug("Solver finished for %s", ds_id)
         self._unsat_core = ucore
         if symbols is None:
             self._logger.warning("Got an UNSAT result with the given domain encoding.")
@@ -828,6 +829,7 @@ class ClingoBackend:
                 self._on_model,
                 include_all_atoms=not self._explicit_show,
             )
+            self._logger.debug("Solver finished for _ds_model")
             self._unsat_core = ucore
             if symbols is None:
                 self._logger.warning(
