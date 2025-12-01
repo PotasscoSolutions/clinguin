@@ -2,17 +2,123 @@
 
 /* custom.scss */
 /* change theme colors */
-$primary: #0052CC;
-$secondary: #6554C0;
-$success: #36B37E;
-$info: #B3BAC5;
+$secondary: #000848;
+$primary: #025bff;
+$success: #1c9d17;
+$info: #D7D2CB;
 $warning: #FFAB00;
-$danger: #FF5630;
-$light: #F4F5F7;
+$danger: #d04324;
+$light: #FFFFFF;
 /* end custom.scss */
+
+$theme-colors: (
+	"primary": $primary,
+	"primary-500": $primary,
+	"primary-400": #357CFF,
+	"primary-300": #9ABDFF,
+	"primary-200": #CCDEFF,
+	"secondary": $secondary,
+	"secondary-500": $secondary,
+	"secondary-400": #33396D,
+	"secondary-300": #9A9CB6,
+	"secondary-200": #CCCEDA,
+	"tertiary-500": #D7D2CB,
+	"tertiary-400": #DFDBD5,
+	"tertiary-300": #EFEDEA,
+	"tertiary-200": #F7F6F5,
+
+	"success": $success,
+	"info": $info,
+	"warning": $warning,
+	"danger": $danger,
+	"light": $light,
+	"dark": #000,
+	// keep Bootstrap's dark or define your own
+);
+
+$font-family-sans-serif: 'Titillium Web', sans-serif;
+$headings-font-family: 'Sen', sans-serif;
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+
+:root {
+	--font-primary: 'Sen', sans-serif;
+	--font-body: 'Titillium Web', sans-serif;
+}
+
+body {
+	font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-primary);
+}
+
+.btn-main {
+	@extend .btn-primary;
+}
+
+.btn-text-dark {
+	@extend .btn-outline-secondary;
+	@extend .border-0;
+
+}
+
+.container-light {
+	@extend .border;
+	@extend .border-primary;
+	@extend .rounded;
+	@extend .border-2;
+	@extend .p-3;
+	box-shadow: 0 4px 16px rgba(2, 91, 255, 0.15);
+}
+
+// .container-dark {
+// 	// @extend .border;
+// 	// @extend .border-tertiary-500;
+// 	@extend .bg-tertiary-200;
+// 	@extend .rounded;
+// 	@extend .border-2;
+// 	@extend .p-3;
+// 	// box-shadow: 0 4px 16px rgba(2, 91, 255, 0.15);
+// }
+
+.brand-text {
+	font-size: 1.1rem;
+	/* modify as needed */
+	font-weight: 500;
+	line-height: 1;
+	/* crucial for vertical alignment */
+	display: flex;
+	align-items: center;
+	font-family: var(--font-primary);
+	margin-top: auto
+}
+
+
+
+.navbar-brand .brand-text {
+	margin-top: 7px;
+	/* adjust -1px, -2px, or -3px depending on the logo */
+}
+
+.container-dark {
+	// @extend .border;
+	// @extend .border-tertiary-400;
+	@extend .bg-tertiary-200;
+	// @extend .rounded;
+	// @extend .border-2;
+	@extend .p-3;
+	// box-shadow: 0 4px 16px rgba(2, 91, 255, 0.15);
+}
+
 
 .myspinner {
 	position: fixed;

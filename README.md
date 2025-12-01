@@ -1,5 +1,10 @@
 # Clinguin
 
+> **Warning**
+> This is a version of clinguin with a setup for Potassco Solutions.
+> For the original repository, please visit:
+> [https://github.com/potassco/clinguin](https://github.com/potassco/clinguin)
+
 Clinguin enables ASP developers to **create interactive User Interface** (UI) prototypes **using only ASP**.
 UIs are defined as sets of facts,  which are then rendered to provide continuous interaction with the ASP solver *clingo* based on user-triggered events.
 
