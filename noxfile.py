@@ -2,26 +2,31 @@ import os
 
 import nox
 
-# default sessions that shall be run
 nox.options.sessions = ["test", "lint_pylint", "lint_flake8"]
 
+DEFAULT_PYTHON = "3.10"
+
 EDITABLE_TESTS = True
-PYTHON_VERSIONS = None
+PYTHON_VERSIONS = [DEFAULT_PYTHON]
+
 if "GITHUB_ACTIONS" in os.environ:
     PYTHON_VERSIONS = ["3.10"]
     EDITABLE_TESTS = False
 
-@nox.session
+
+@nox.session(python=DEFAULT_PYTHON)
 def lint_flake8(session):
     session.install("-e", ".[lint_flake8]")
     session.run("flake8", "clinguin", "tests")
 
-@nox.session
+
+@nox.session(python=DEFAULT_PYTHON)
 def lint_pylint(session):
     session.install("-e", ".[lint_pylint]")
-    session.run("pylint", "clinguin")    
+    session.run("pylint", "clinguin")
 
-@nox.session
+
+@nox.session(python=DEFAULT_PYTHON)
 def format(session):
     session.install("-e", ".[format]")
     check = "check" in session.posargs
@@ -51,8 +56,12 @@ def format(session):
         black_args.insert(1, "--diff")
     session.run("black", *black_args)
 
+
 @nox.session(python=PYTHON_VERSIONS)
 def test(session):
     session.install("pytest")
-    session.install(".")
+    if EDITABLE_TESTS:
+        session.install("-e", ".")
+    else:
+        session.install(".")
     session.run("pytest")

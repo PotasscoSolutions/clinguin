@@ -200,3 +200,16 @@ class ClinguinContext:
         import __main__
 
         return getattr(__main__, name)
+
+    def decimal_string(self, number, decimals):
+        """
+        Converts a number into a decimal string with the given number of decimals
+
+        Args:
+            number: The number to convert
+            decimals: The number of decimals to use
+        """
+        number = number.number if number.type == SymbolType.Number else 0
+        decimals = decimals.number if decimals.type == SymbolType.Number else 0
+        decimal = number / 100
+        return String(f"{decimal:.{decimals}f}")
