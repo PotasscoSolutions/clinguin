@@ -1,6 +1,7 @@
 import { Attribute, Injectable } from '@angular/core';
 import { AttributeDto, ElementDto } from './types/json-response.dto';
 // import { log } from 'console'; // Removed, use global console.log instead
+const TOOLTIP_FLAG = "__tooltip_initialized__";
 
 @Injectable({
     providedIn: 'root'
@@ -106,45 +107,59 @@ export class AttributeHelperService {
     }
 
     setCustomTooltip(html: HTMLElement, attributes: AttributeDto[]) {
-        const tooltipAttribute = this.findAttribute("tooltip", attributes);
-        const tooltipErrorAttribute = this.findAttribute("tooltip_error", attributes);
-
+        const tooltipAttr = this.findAttribute("tooltip", attributes);
+        const tooltipErrorAttr = this.findAttribute("tooltip_error", attributes);
         const valid_tooltips = ["BUTTON", "APP-LABEL", "APP-COLLAPSE", "P"]
         console.log(html.tagName);
         if (!valid_tooltips.includes(html.tagName)) return;
 
-        const value = tooltipAttribute ? tooltipAttribute.value : (tooltipErrorAttribute ? tooltipErrorAttribute.value : null);
-        if (tooltipAttribute || tooltipErrorAttribute) {
-            // Create a tooltip element
-            const tooltip = document.createElement("div");
-            tooltip.innerText = value!;
-            tooltip.style.position = "fixed";
-            tooltip.style.backgroundColor = tooltipErrorAttribute ? "#FF5630" : "#000848";
-            tooltip.style.color = "white";
-            tooltip.style.padding = "7px";
-            tooltip.style.borderRadius = "3px";
-            tooltip.style.fontSize = "12px";
-            tooltip.style.visibility = "hidden";
-            tooltip.style.zIndex = "1000";
+        const value = tooltipAttr?.value ?? tooltipErrorAttr?.value ?? null;
+        if (!value) return;
 
-            // Append the tooltip to the parent element
-            html.appendChild(tooltip);
-
-            // Show and position the tooltip on hover
-            html.onmouseenter = (event) => {
-                tooltip.style.visibility = "visible";
-                tooltip.style.top = `${event.clientY + 10}px`;
-                tooltip.style.left = `${event.clientX + 10}px`;
-            };
-            html.onmousemove = (event) => {
-                tooltip.style.top = `${event.clientY + 10}px`;
-                tooltip.style.left = `${event.clientX + 10}px`;
-            };
-            html.onmouseleave = () => {
-                tooltip.style.visibility = "hidden";
-            };
+        // 👉 Prevent running twice on the same element
+        if ((html as any)[TOOLTIP_FLAG]) {
+            // Update content only
+            const existing = html.querySelector(".custom-tooltip") as HTMLElement | null;
+            if (existing) existing.innerText = value;
+            return;
         }
+        (html as any)[TOOLTIP_FLAG] = true;
+
+        // Create tooltip ONCE
+        const tooltip = document.createElement("div");
+        tooltip.classList.add("custom-tooltip");
+        tooltip.classList.add("h7");
+        tooltip.innerText = value;
+        tooltip.style.position = "fixed";
+        tooltip.style.backgroundColor = tooltipErrorAttr ? "#FF5630" : "#000848";
+        tooltip.style.color = "white";
+        tooltip.style.padding = "7px";
+        tooltip.style.borderRadius = "3px";
+        tooltip.style.fontSize = "12px";
+        tooltip.style.visibility = "hidden";
+        tooltip.style.opacity = "1";
+        tooltip.style.zIndex = "10000";
+
+        document.body.appendChild(tooltip);
+
+
+        // Attach event listeners ONCE
+        html.addEventListener("mouseenter", (event) => {
+            tooltip.style.visibility = "visible";
+            tooltip.style.top = `${event.clientY + 10}px`;
+            tooltip.style.left = `${event.clientX + 10}px`;
+        });
+
+        html.addEventListener("mousemove", (event) => {
+            tooltip.style.top = `${event.clientY + 10}px`;
+            tooltip.style.left = `${event.clientX + 10}px`;
+        });
+
+        html.addEventListener("mouseleave", () => {
+            tooltip.style.visibility = "hidden";
+        });
     }
+
 
     addAttributes(html: HTMLElement, attributes: AttributeDto[]) {
 
@@ -344,7 +359,6 @@ export class AttributeHelperService {
         let attribute = this.findAttribute("child_layout", attributes)
         let flex_direction = this.findAttribute("flex_direction", attributes)
         let display_overwrite = this.findAttribute("display", attributes)
-        console.log(display_overwrite);
 
         if (display_overwrite != null && display_overwrite.value == "none") {
             console.log(display_overwrite.value);

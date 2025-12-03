@@ -63,12 +63,32 @@ h6 {
 
 .btn-main {
 	@extend .btn-primary;
+	@extend .h4;
+}
+
+.btn-secondary {
+	@extend .btn-secondary;
+	@extend .h4;
 }
 
 .btn-text-dark {
 	@extend .btn-outline-secondary;
 	@extend .border-0;
+	@extend .h4;
 
+}
+
+.btn-menu {
+	@extend .btn-outline-primary;
+	@extend .text-tertiary-200;
+	@extend .border-0;
+	@extend .h4;
+}
+
+.btn-menu-danger {
+	@extend .btn-outline-danger;
+	@extend .border-0;
+	@extend .h4;
 }
 
 .container-light {
@@ -209,4 +229,27 @@ body {
 	pointer-events: none;
 	position: absolute !important;
 	z-index: 99999 !important;
+}
+
+
+.glass-nav {
+	background: rgba(0, 8, 72, 0.8);
+	/* #000848 with 0.5 opacity */
+	/* MUST be translucent */
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(10px);
+
+	/* Optional polish */
+	border-bottom: 1px solid #025bff30;
+}
+
+.alert {
+	margin-left: 10pt;
+	background-color: #357CFF30;
+	border-color: #025bff;
+	color: white;
+}
+
+.btn-close {
+	filter: invert(1);
 }

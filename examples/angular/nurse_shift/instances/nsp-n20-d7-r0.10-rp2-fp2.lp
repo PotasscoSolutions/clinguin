@@ -15,7 +15,7 @@ staff(13, "Jennifer Summers", "Nurse", "19665", 4).
 staff(14, "April Snyder", "Nurse", "53279", 6).
 staff(15, "Dana Nguyen", "Nurse", "83375", 5).
 staff(16, "Cheryl Bradley", "Nurse", "56372", 4).
-staff(17, "Walter Pratt", "Nurse", "51444", 2).
+% staff(17, "Walter Pratt", "Nurse", "51444", 2).
 % staff(18, "Bobby Flores", "Nurse", "93941", 3).
 % staff(19, "Tasha Rodriguez", "Nurse", "82420", 1).
 % staff(20, "Michelle Kelley", "Nurse", "68024", 2).
@@ -37,7 +37,7 @@ staff_group("All", 13).
 staff_group("All", 14).
 staff_group("All", 15).
 staff_group("All", 16).
-staff_group("All", 17).
+% staff_group("All", 17).
 % staff_group("All", 18).
 % staff_group("All", 19).
 % staff_group("All", 20).
@@ -60,7 +60,7 @@ staff_group("Medium", 14).
 staff_group("Medium", 15).
 staff_group("Medium", 16).
 staff_group("Novice").
-staff_group("Novice", 17).
+% staff_group("Novice", 17).
 % staff_group("Novice", 18).
 % staff_group("Novice", 19).
 % staff_group("Novice", 20).
@@ -293,16 +293,16 @@ shifts_hard_ub(16, "E", 0).
 shifts_hard_ub(16, "N", 0).
 shifts_hard_ub(16, "EM", 0).
 shifts_hard_ub(16, "LM", 1).
-shifts_soft_lb(17, "LD", 0).
-shifts_soft_ub(17, "LD", 1).
-shifts_soft_lb(17, "SE", 0).
-shifts_soft_ub(17, "SE", 1).
-shifts_soft_lb(17, "SN", 0).
-shifts_soft_ub(17, "SN", 1).
-shifts_hard_ub(17, "E", 0).
-shifts_hard_ub(17, "N", 0).
-shifts_hard_ub(17, "EM", 0).
-shifts_hard_ub(17, "LM", 1).
+% shifts_soft_lb(17, "LD", 0).
+% shifts_soft_ub(17, "LD", 1).
+% shifts_soft_lb(17, "SE", 0).
+% shifts_soft_ub(17, "SE", 1).
+% shifts_soft_lb(17, "SN", 0).
+% shifts_soft_ub(17, "SN", 1).
+% shifts_hard_ub(17, "E", 0).
+% shifts_hard_ub(17, "N", 0).
+% shifts_hard_ub(17, "EM", 0).
+% shifts_hard_ub(17, "LM", 1).
 % shifts_soft_lb(18, "LD", 0).
 % shifts_soft_ub(18, "LD", 1).
 % shifts_soft_lb(18, "SE", 0).
@@ -535,10 +535,11 @@ forbidden_pattern("LD-D").
 forbidden_pattern("LM-LD").
 forbidden_pattern("LM-D").
 % Staff requests ---------------------------------
-staff_pos_request(17, 4, "D").
-staff_neg_request(18, 0, "SE").
+% staff_pos_request(17, 4, "D").
+% staff_neg_request(18, 0, "SE").
 staff_pos_request(13, 11, "D").
-% staff_pos_request(20, 7, "TR").
+staff_pos_request(16, 7, "TR").
+staff_pos_request(1, 7, "TR").
 staff_pos_request(8, 11, "TR").
 staff_pos_request(3, 3, "WR").
 staff_neg_request(8, 12, "SN").

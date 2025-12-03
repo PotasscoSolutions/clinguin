@@ -1,10 +1,11 @@
-<nav #navbarElement class="navbar navbar-expand navbar-light justify-content-between bg-tertiary-300 fixed-top">
+<nav #navbarElement class="navbar navbar-expand glass-nav justify-content-between fixed-top">
   <div class="container-fluid">
 
     <a class="navbar-brand text-dark d-flex align-items-center">
-      <img src="assets/potassco_rgb 2colors_digital.svg" alt="Potassco Logo" style="height:32px; margin-right:8px;" />
-      <span style="border-left: 1px solid #bbb; height: 28px; margin: 0 12px;"></span>
-      <span class="brand-text text-secondary-500">{{ title }}</span>
+      <img src="assets/potassco_rgb_blue.png" alt="Potassco Logo"
+        style="height:40px; margin-right:8px; margin-left: 20px;" />
+      <span style="border-left: 1px solid #025bff; height: 35px; margin-left: 60px;"></span>
+      <span class="brand-text text-light" style="margin-left: 15px; margin-top: 9px;">{{ title }}</span>
     </a>
     <button class="navbar-toggler d-lg-none" type="button" [attr.aria-expanded]="!isCollapsed"
       (click)="isCollapsed = !isCollapsed">
