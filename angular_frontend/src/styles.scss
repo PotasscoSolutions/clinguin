@@ -196,6 +196,13 @@ body.has-sidebar-pinned {
 
 body {
 	position: relative;
+	background-image: url('assets/background-dark.jpg');
+	// background-color: $secondary;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	min-height: 100vh;
+	background-attachment: fixed;
 }
 
 .leader-line {

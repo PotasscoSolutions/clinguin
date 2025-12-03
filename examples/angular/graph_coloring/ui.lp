@@ -28,6 +28,8 @@ elem(window, window, root).
         attr(n(X), clingraph_id, X) :- node(X).
         when(n(X), right_click, update, (context_menu(X),visibility,shown)):- node(X).
 
+
+
     %%%%%%%%%%%%%%%%%%%%%%%%
     % Download modal
     %%%%%%%%%%%%%%%%%%%%%%%%
