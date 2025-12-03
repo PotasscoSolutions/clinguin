@@ -16,9 +16,9 @@ staff(14, "April Snyder", "Nurse", "53279", 6).
 staff(15, "Dana Nguyen", "Nurse", "83375", 5).
 staff(16, "Cheryl Bradley", "Nurse", "56372", 4).
 staff(17, "Walter Pratt", "Nurse", "51444", 2).
-staff(18, "Bobby Flores", "Nurse", "93941", 3).
-staff(19, "Tasha Rodriguez", "Nurse", "82420", 1).
-staff(20, "Michelle Kelley", "Nurse", "68024", 2).
+% staff(18, "Bobby Flores", "Nurse", "93941", 3).
+% staff(19, "Tasha Rodriguez", "Nurse", "82420", 1).
+% staff(20, "Michelle Kelley", "Nurse", "68024", 2).
 % Staff groups -----------------------------------
 staff_group("All").
 staff_group("All", 1).
@@ -38,9 +38,9 @@ staff_group("All", 14).
 staff_group("All", 15).
 staff_group("All", 16).
 staff_group("All", 17).
-staff_group("All", 18).
-staff_group("All", 19).
-staff_group("All", 20).
+% staff_group("All", 18).
+% staff_group("All", 19).
+% staff_group("All", 20).
 staff_group("Expert").
 staff_group("Expert", 1).
 staff_group("Expert", 2).
@@ -61,9 +61,9 @@ staff_group("Medium", 15).
 staff_group("Medium", 16).
 staff_group("Novice").
 staff_group("Novice", 17).
-staff_group("Novice", 18).
-staff_group("Novice", 19).
-staff_group("Novice", 20).
+% staff_group("Novice", 18).
+% staff_group("Novice", 19).
+% staff_group("Novice", 20).
 % Dates ------------------------------------------
 base_date(-7, 20250901, "Mo").
 base_date(-6, 20250902, "Tu").
@@ -303,36 +303,36 @@ shifts_hard_ub(17, "E", 0).
 shifts_hard_ub(17, "N", 0).
 shifts_hard_ub(17, "EM", 0).
 shifts_hard_ub(17, "LM", 1).
-shifts_soft_lb(18, "LD", 0).
-shifts_soft_ub(18, "LD", 1).
-shifts_soft_lb(18, "SE", 0).
-shifts_soft_ub(18, "SE", 1).
-shifts_soft_lb(18, "SN", 0).
-shifts_soft_ub(18, "SN", 1).
-shifts_hard_ub(18, "E", 0).
-shifts_hard_ub(18, "N", 0).
-shifts_hard_ub(18, "EM", 0).
-shifts_hard_ub(18, "LM", 1).
-shifts_soft_lb(19, "LD", 0).
-shifts_soft_ub(19, "LD", 1).
-shifts_soft_lb(19, "SE", 0).
-shifts_soft_ub(19, "SE", 1).
-shifts_soft_lb(19, "SN", 0).
-shifts_soft_ub(19, "SN", 1).
-shifts_hard_ub(19, "E", 0).
-shifts_hard_ub(19, "N", 0).
-shifts_hard_ub(19, "EM", 0).
-shifts_hard_ub(19, "LM", 1).
-shifts_soft_lb(20, "LD", 0).
-shifts_soft_ub(20, "LD", 1).
-shifts_soft_lb(20, "SE", 0).
-shifts_soft_ub(20, "SE", 1).
-shifts_soft_lb(20, "SN", 0).
-shifts_soft_ub(20, "SN", 1).
-shifts_hard_ub(20, "E", 0).
-shifts_hard_ub(20, "N", 0).
-shifts_hard_ub(20, "EM", 0).
-shifts_hard_ub(20, "LM", 1).
+% shifts_soft_lb(18, "LD", 0).
+% shifts_soft_ub(18, "LD", 1).
+% shifts_soft_lb(18, "SE", 0).
+% shifts_soft_ub(18, "SE", 1).
+% shifts_soft_lb(18, "SN", 0).
+% shifts_soft_ub(18, "SN", 1).
+% shifts_hard_ub(18, "E", 0).
+% shifts_hard_ub(18, "N", 0).
+% shifts_hard_ub(18, "EM", 0).
+% shifts_hard_ub(18, "LM", 1).
+% shifts_soft_lb(19, "LD", 0).
+% shifts_soft_ub(19, "LD", 1).
+% shifts_soft_lb(19, "SE", 0).
+% shifts_soft_ub(19, "SE", 1).
+% shifts_soft_lb(19, "SN", 0).
+% shifts_soft_ub(19, "SN", 1).
+% shifts_hard_ub(19, "E", 0).
+% shifts_hard_ub(19, "N", 0).
+% shifts_hard_ub(19, "EM", 0).
+% shifts_hard_ub(19, "LM", 1).
+% shifts_soft_lb(20, "LD", 0).
+% shifts_soft_ub(20, "LD", 1).
+% shifts_soft_lb(20, "SE", 0).
+% shifts_soft_ub(20, "SE", 1).
+% shifts_soft_lb(20, "SN", 0).
+% shifts_soft_ub(20, "SN", 1).
+% shifts_hard_ub(20, "E", 0).
+% shifts_hard_ub(20, "N", 0).
+% shifts_hard_ub(20, "EM", 0).
+% shifts_hard_ub(20, "LM", 1).
 horizontal_constraint_type("LD").
 horizontal_constraint_type("SE").
 horizontal_constraint_type("SN").
@@ -538,7 +538,7 @@ forbidden_pattern("LM-D").
 staff_pos_request(17, 4, "D").
 staff_neg_request(18, 0, "SE").
 staff_pos_request(13, 11, "D").
-staff_pos_request(20, 7, "TR").
+% staff_pos_request(20, 7, "TR").
 staff_pos_request(8, 11, "TR").
 staff_pos_request(3, 3, "WR").
 staff_neg_request(8, 12, "SN").
